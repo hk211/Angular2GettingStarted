@@ -4,10 +4,10 @@
         "**/.git": true,
         "**/.DS_Store": true,
         "**/.map": true,
-        "**/*.js": {"when": "$(basename).ts",
-         "**/*.js.map": { "when": "$(basename)"}
+        "**/*.js": true,
+         "**/*.js.map": true
+    }
         // here
-    }, 
     // Controls auto save of dirty files. Accepted values:  "off", "afterDelay", "onFocusChange". If set to "afterDelay" you can configure the delay in "files.autoSaveDelay".
     "files.autoSave": "afterDelay"
 }
