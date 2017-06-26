@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'ai-star',
@@ -8,10 +8,16 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 export class StarComponent implements OnChanges {
     @Input() rating: number;
+    @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
     starWidth: number;
+    @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
     ngOnChanges(): void {
         this.starWidth = this.rating * 86/5;
+    }
+
+    onClick(): void {
+        this.ratingClicked.emit(`The rating ${this.rating} was clicked`);
     }
 }
 
