@@ -4,15 +4,23 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { ProductListComponent } from './products/product-list.component';
+//import { ProductDetailComponent } from './products/product-detail.component';
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './home/welcome.component';
 
 @NgModule({
-  imports: [                    // for pulling in external modules
-    BrowserModule, HttpModule, FormsModule 
+  imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot([
+      { path: 'products', component: ProductListComponent },
+      //{ path: 'product/:id', component: ProductDetailComponent },
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+    ])
   ],
   declarations: [               // for components, directives and pipes that belong to this module
-    AppComponent, ProductListComponent, ProductFilterPipe, StarComponent 
+    AppComponent, ProductListComponent, ProductFilterPipe, StarComponent, WelcomeComponent
   ],
   bootstrap: [ AppComponent ]
 })
